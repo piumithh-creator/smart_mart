@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - SmartMart</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="navbar-brand">
+                <span>S</span>martMart
+            </a>
+            
+            <div class="navbar-search">
+                <input type="text" id="search-input" placeholder="Search products...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <ul class="navbar-links" id="navbar-links">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cart.html" class="nav-link nav-cart" id="cart-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="nav-cart-count" id="cart-count">0</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="auth-links">
+                    <!-- Auth links will be injected here -->
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>My Orders</li>
+        </ol>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Error/Success Messages -->
+        <div id="error-message" class="alert alert-error" style="display: none;"></div>
+        <div id="success-message" class="alert alert-success" style="display: none;"></div>
+        
+        <h2 style="font-size: 2rem; color: #1f2937; margin-bottom: 1.5rem;">My Orders</h2>
+        
+        <!-- Orders Container -->
+        <div id="orders-container">
+            <!-- Orders will be loaded here -->
+        </div>
+        
+        <!-- Order Modal -->
+        <div id="order-modal" class="modal"></div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>SmartMart</h3>
+                <p>Your trusted supermarket partner for all your daily needs.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="orders.html">My Orders</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2024 SmartMart. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/orders.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize auth
+            AuthUI.init();
+            
+            // Initialize orders
+            if (window.OrdersUI) {
+                window.OrdersUI.init();
+            }
+            
+            // Search functionality
+            const searchBtn = document.getElementById('search-btn');
+            const searchInput = document.getElementById('search-input');
+            
+            searchBtn.addEventListener('click', () => {
+                const keyword = searchInput.value.trim();
+                if (keyword) {
+                    window.location.href = `products.html?search=${encodeURIComponent(keyword)}`;
+                }
+            });
+            
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    searchBtn.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

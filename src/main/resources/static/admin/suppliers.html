@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suppliers - Admin - SmartMart</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar-header">
+            <h2>Admin Panel</h2>
+        </div>
+        <nav class="admin-sidebar-nav">
+            <a href="dashboard.html" class="admin-nav-link">📊 Dashboard</a>
+            <a href="products.html" class="admin-nav-link">📦 Products</a>
+            <a href="categories.html" class="admin-nav-link">📁 Categories</a>
+            <a href="suppliers.html" class="admin-nav-link active">🏪 Suppliers</a>
+            <a href="customers.html" class="admin-nav-link">👥 Customers</a>
+            <a href="orders.html" class="admin-nav-link">📦 Orders</a>
+            <a href="inventory.html" class="admin-nav-link">📊 Inventory</a>
+        </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="admin-content">
+        <div class="admin-header">
+            <h1 style="margin: 0;">Supplier Management</h1>
+            <button class="admin-toggle" onclick="AdminUI.toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Error/Success Messages -->
+        <div id="error-message" class="alert alert-error" style="display: none;"></div>
+        <div id="success-message" class="alert alert-success" style="display: none;"></div>
+        
+        <div style="margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+            <button class="btn btn-primary" onclick="alert('Add supplier functionality coming soon')">
+                <i class="fas fa-plus"></i> Add Supplier
+            </button>
+            <input type="text" id="search-supplier" placeholder="Search suppliers..." class="form-control" style="max-width: 300px;">
+        </div>
+        
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Contact Person</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="6" style="text-align: center;">Supplier management coming soon</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    
+    <!-- Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!SmartMartAPI.Auth.isAdmin()) {
+                window.location.href = '../index.html';
+                return;
+            }
+            
+            AdminUI.renderSidebar();
+        });
+    </script>
+</body>
+</html>

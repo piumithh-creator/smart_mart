@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - SmartMart</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="navbar-brand">
+                <span>S</span>martMart
+            </a>
+            
+            <div class="navbar-search">
+                <input type="text" id="search-input" placeholder="Search products...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <ul class="navbar-links" id="navbar-links">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cart.html" class="nav-link nav-cart" id="cart-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="nav-cart-count" id="cart-count">0</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="auth-links">
+                    <!-- Auth links will be injected here -->
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li>Checkout</li>
+        </ol>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Error/Success Messages -->
+        <div id="error-message" class="alert alert-error" style="display: none;"></div>
+        <div id="success-message" class="alert alert-success" style="display: none;"></div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <!-- Cart Preview -->
+            <div>
+                <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Cart Summary</h2>
+                <div id="cart-items-preview" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <!-- Cart items preview -->
+                </div>
+            </div>
+            
+            <!-- Checkout Form -->
+            <div>
+                <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem;">Checkout</h2>
+                
+                <!-- Order Summary -->
+                <div id="order-summary" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+                    <!-- Order summary will be injected here -->
+                </div>
+                
+                <!-- Address Selection -->
+                <div id="address-section" style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Shipping Address</h3>
+                    <div id="address-select">
+                        <p>Loading addresses...</p>
+                    </div>
+                    <div id="address-form" style="margin-top: 1rem; display: none;"></div>
+                </div>
+                
+                <!-- Payment Method -->
+                <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Payment Method</h3>
+                    <div class="form-group">
+                        <select id="payment-method" class="form-control">
+                            <option value="CASH">Cash on Delivery</option>
+                            <option value="CARD">Credit/Debit Card</option>
+                            <option value="ONLINE">Online Payment</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Order Notes -->
+                <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 2rem;">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 1rem;">Order Notes (Optional)</h3>
+                    <textarea id="order-notes" class="form-control" rows="3" placeholder="Add any special instructions for your order..."></textarea>
+                </div>
+                
+                <!-- Place Order Button -->
+                <button id="place-order-btn" class="btn btn-primary btn-lg btn-block">
+                    Place Order
+                </button>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>SmartMart</h3>
+                <p>Your trusted supermarket partner for all your daily needs.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="orders.html">My Orders</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2024 SmartMart. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/checkout.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize auth
+            AuthUI.init();
+            
+            // Initialize checkout
+            if (window.CheckoutUI) {
+                window.CheckoutUI.initCheckout();
+            }
+            
+            // Search functionality
+            const searchBtn = document.getElementById('search-btn');
+            const searchInput = document.getElementById('search-input');
+            
+            searchBtn.addEventListener('click', () => {
+                const keyword = searchInput.value.trim();
+                if (keyword) {
+                    window.location.href = `products.html?search=${encodeURIComponent(keyword)}`;
+                }
+            });
+            
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    searchBtn.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

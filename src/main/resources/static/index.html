@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartMart - Your One-Stop Supermarket</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="navbar-brand">
+                <span>S</span>martMart
+            </a>
+            
+            <div class="navbar-search">
+                <input type="text" id="search-input" placeholder="Search products...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <ul class="navbar-links" id="navbar-links">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#categories" class="nav-link">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cart.html" class="nav-link nav-cart" id="cart-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="nav-cart-count" id="cart-count">0</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="auth-links">
+                    <!-- Auth links will be injected here -->
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <ol>
+            <li><a href="index.html">Home</a></li>
+        </ol>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Error/Success Messages -->
+        <div id="error-message" class="alert alert-error" style="display: none;"></div>
+        <div id="success-message" class="alert alert-success" style="display: none;"></div>
+        
+        <!-- Hero Section -->
+        <section class="hero" style="text-align: center; padding: 4rem 0; margin-bottom: 3rem; background: linear-gradient(135deg, #2563eb, #1e40af); color: white;">
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Welcome to SmartMart</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Your one-stop supermarket for all your daily needs</p>
+            <a href="products.html" class="btn btn-lg" style="background: white; color: #2563eb;">Shop Now</a>
+        </section>
+        
+        <!-- Categories Section -->
+        <section id="categories" style="margin-bottom: 3rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 1.5rem; color: #1f2937;">Shop by Category</h2>
+            <div class="categories-grid" id="categories-grid">
+                <!-- Categories will be loaded here -->
+            </div>
+        </section>
+        
+        <!-- Featured Products -->
+        <section style="margin-bottom: 3rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2 style="font-size: 2rem; color: #1f2937;">Featured Products</h2>
+                <a href="products.html" style="color: #2563eb; font-weight: 600;">View All →</a>
+            </div>
+            <div class="products-grid" id="featured-products">
+                <!-- Featured products will be loaded here -->
+            </div>
+        </section>
+        
+        <!-- Quick Links -->
+        <section>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <div style="background: white; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">🚚</div>
+                    <h3>Fast Delivery</h3>
+                    <p style="color: #6b7280; margin-top: 0.5rem;">Free delivery on orders over $50</p>
+                </div>
+                <div style="background: white; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+                    <h3>Quality Guarantee</h3>
+                    <p style="color: #6b7280; margin-top: 0.5rem;">100% authentic products</p>
+                </div>
+                <div style="background: white; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💳</div>
+                    <h3>Secure Payment</h3>
+                    <p style="color: #6b7280; margin-top: 0.5rem;">Multiple payment options</p>
+                </div>
+                <div style="background: white; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">❤️</div>
+                    <h3>Customer Support</h3>
+                    <p style="color: #6b7280; margin-top: 0.5rem;">24/7 assistance</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>SmartMart</h3>
+                <p>Your trusted supermarket partner for all your daily needs.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="orders.html">My Orders</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> support@smartmart.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Main St, City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2024 SmartMart. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Order Modal -->
+    <div id="order-modal" class="modal"></div>
+    
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize auth
+            AuthUI.init();
+            
+            // Load categories
+            loadCategories();
+            
+            // Load featured products
+            loadFeaturedProducts();
+            
+            // Search functionality
+            const searchBtn = document.getElementById('search-btn');
+            const searchInput = document.getElementById('search-input');
+            
+            searchBtn.addEventListener('click', () => {
+                const keyword = searchInput.value.trim();
+                if (keyword) {
+                    window.location.href = `products.html?search=${encodeURIComponent(keyword)}`;
+                }
+            });
+            
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    searchBtn.click();
+                }
+            });
+        });
+        
+        async function loadCategories() {
+            try {
+                const response = await SmartMartAPI.Category.getAll();
+                const categories = response.data;
+                const container = document.getElementById('categories-grid');
+                
+                if (container && categories.length > 0) {
+                    container.innerHTML = categories.slice(0, 4).map(category => `
+                        <div class="category-card">
+                            <div class="category-card-icon">${getCategoryIcon(category.name)}</div>
+                            <h3 class="category-card-title">${category.name}</h3>
+                            <p class="category-card-count">${category.description || 'Shop now'}</p>
+                            <a href="products.html?category=${category.id}" class="btn btn-outline btn-sm" style="margin-top: 1rem;">View</a>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Failed to load categories:', error);
+            }
+        }
+        
+        function getCategoryIcon(categoryName) {
+            const icons = {
+                'Electronics': '💻',
+                'Groceries': '🛒',
+                'Clothing': '👕',
+                'Home': '🏠',
+                'Sports': '⚽',
+                'Books': '📚',
+                'Beauty': '💄',
+                'Toys': '🧸'
+            };
+            return icons[categoryName] || '📦';
+        }
+        
+        async function loadFeaturedProducts() {
+            try {
+                const response = await SmartMartAPI.Product.getAll(0, 4);
+                const products = response.data.content || response.data;
+                const container = document.getElementById('featured-products');
+                
+                if (container && products.length > 0) {
+                    container.innerHTML = products.map(product => `
+                        <div class="product-card">
+                            <div class="product-card-image">
+                                <img src="${getProductImage(product.name)}" alt="${product.name}">
+                            </div>
+                            <div class="product-card-body">
+                                <div class="product-card-category">${product.categoryName || ''}</div>
+                                <h3 class="product-card-title">${product.name}</h3>
+                                <div class="product-card-price">$${product.price.toFixed(2)}</div>
+                                <div class="product-card-stock ${getStockClass(product.quantityInStock)}">
+                                    ${getStockText(product.quantityInStock)}
+                                </div>
+                                <div class="product-card-actions">
+                                    <button class="btn btn-primary" onclick="viewProduct(${product.id})">Details</button>
+                                    <button class="btn btn-outline" onclick="addToCart(${product.id})">
+                                        <i class="fas fa-shopping-cart"></i> Add
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Failed to load featured products:', error);
+            }
+        }
+        
+        function getProductImage(productName) {
+            return `https://via.placeholder.com/280x200/2563eb/ffffff?text=${encodeURIComponent(productName)}`;
+        }
+        
+        function getStockClass(quantity) {
+            if (quantity === 0) return 'out-of-stock';
+            if (quantity < 10) return 'low-stock';
+            return 'in-stock';
+        }
+        
+        function getStockText(quantity) {
+            if (quantity === 0) return 'Out of Stock';
+            if (quantity < 10) return 'Low Stock';
+            return 'In Stock';
+        }
+        
+        function viewProduct(id) {
+            window.location.href = `product-details.html?id=${id}`;
+        }
+        
+        async function addToCart(productId) {
+            if (!SmartMartAPI.Auth.isAuthenticated()) {
+                alert('Please login to add items to cart');
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            try {
+                await SmartMartAPI.Cart.addItem(productId, 1);
+                alert('Item added to cart!');
+                AuthUI.renderNavbar();
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+    </script>
+</body>
+</html>

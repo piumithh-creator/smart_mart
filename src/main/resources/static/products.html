@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - SmartMart</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="navbar-brand">
+                <span>S</span>martMart
+            </a>
+            
+            <div class="navbar-search">
+                <input type="text" id="search-input" placeholder="Search products...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <ul class="navbar-links" id="navbar-links">
+                <li class="nav-item">
+                    <a href="products.html" class="nav-link active">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a href="cart.html" class="nav-link nav-cart" id="cart-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="nav-cart-count" id="cart-count">0</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="auth-links">
+                    <!-- Auth links will be injected here -->
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>Products</li>
+        </ol>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Error/Success Messages -->
+        <div id="error-message" class="alert alert-error" style="display: none;"></div>
+        <div id="success-message" class="alert alert-success" style="display: none;"></div>
+        
+        <!-- Search & Filters -->
+        <div class="search-filters">
+            <input type="text" id="search-input-filter" placeholder="Search products...">
+            <select id="category-select">
+                <option value="">All Categories</option>
+            </select>
+            <select id="sort-select">
+                <option value="id">Sort by ID</option>
+                <option value="price">Price</option>
+                <option value="name">Name</option>
+            </select>
+            <button class="btn btn-primary" onclick="filterProducts()">Filter</button>
+        </div>
+        
+        <!-- Products Grid -->
+        <div class="products-grid" id="products-container">
+            <!-- Products will be loaded here -->
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination" id="pagination" style="display: none;">
+            <!-- Pagination will be injected here -->
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>SmartMart</h3>
+                <p>Your trusted supermarket partner for all your daily needs.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="orders.html">My Orders</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2024 SmartMart. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/products.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize auth
+            AuthUI.init();
+            
+            // Load categories for filter
+            loadCategories();
+            
+            // Get search params
+            const urlParams = new URLSearchParams(window.location.search);
+            const search = urlParams.get('search');
+            const category = urlParams.get('category');
+            
+            if (search) {
+                document.getElementById('search-input-filter').value = search;
+            }
+            if (category) {
+                document.getElementById('category-select').value = category;
+            }
+            
+            // Load products
+            loadProducts(0);
+            
+            // Search functionality
+            const searchBtn = document.getElementById('search-btn');
+            const searchInput = document.getElementById('search-input');
+            
+            searchBtn.addEventListener('click', () => {
+                const keyword = searchInput.value.trim();
+                if (keyword) {
+                    window.location.href = `products.html?search=${encodeURIComponent(keyword)}`;
+                }
+            });
+            
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    searchBtn.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

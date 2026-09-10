@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - Admin - SmartMart</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar-header">
+            <h2>Admin Panel</h2>
+        </div>
+        <nav class="admin-sidebar-nav">
+            <a href="dashboard.html" class="admin-nav-link">📊 Dashboard</a>
+            <a href="products.html" class="admin-nav-link">📦 Products</a>
+            <a href="categories.html" class="admin-nav-link">📁 Categories</a>
+            <a href="suppliers.html" class="admin-nav-link">🏪 Suppliers</a>
+            <a href="customers.html" class="admin-nav-link">👥 Customers</a>
+            <a href="orders.html" class="admin-nav-link active">📦 Orders</a>
+            <a href="inventory.html" class="admin-nav-link">📊 Inventory</a>
+        </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="admin-content">
+        <div class="admin-header">
+            <h1 style="margin: 0;">Order Management</h1>
+            <button class="admin-toggle" onclick="AdminUI.toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Error/Success Messages -->
+        <div id="error-message" class="alert alert-error" style="display: none;"></div>
+        <div id="success-message" class="alert alert-success" style="display: none;"></div>
+        
+        <div style="margin-bottom: 1.5rem;">
+            <select id="order-status-filter" class="form-control" style="max-width: 200px;">
+                <option value="">All Status</option>
+                <option value="PENDING">Pending</option>
+                <option value="CONFIRMED">Confirmed</option>
+                <option value="PROCESSING">Processing</option>
+                <option value="SHIPPED">Shipped</option>
+                <option value="DELIVERED">Delivered</option>
+                <option value="CANCELLED">Cancelled</option>
+            </select>
+        </div>
+        
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Payment</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="7" style="text-align: center;">Order management coming soon</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    
+    <!-- Scripts -->
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (!SmartMartAPI.Auth.isAdmin()) {
+                window.location.href = '../index.html';
+                return;
+            }
+            
+            AdminUI.renderSidebar();
+        });
+    </script>
+</body>
+</html>

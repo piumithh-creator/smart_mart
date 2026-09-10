@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SmartMart</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div style="min-height: 100vh; display: flex; flex-direction: column;">
+        <!-- Navbar -->
+        <header>
+            <nav class="navbar">
+                <a href="index.html" class="navbar-brand">
+                    <span>S</span>martMart
+                </a>
+                <div class="navbar-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="login.html" class="nav-link">Login</a>
+                </div>
+            </nav>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="container" style="flex: 1; display: flex; align-items: center; justify-content: center;">
+            <div style="width: 100%; max-width: 500px;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h1 style="font-size: 2.5rem; color: #1f2937;">Create Account</h1>
+                    <p style="color: #6b7280; margin-top: 0.5rem;">Join SmartMart and start shopping</p>
+                </div>
+                
+                <div class="alert alert-error" id="error-message" style="display: none;"></div>
+                <div class="alert alert-success" id="success-message" style="display: none;"></div>
+                
+                <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                            <input type="text" id="firstName" class="form-control" placeholder="Enter your first name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" id="lastName" class="form-control" placeholder="Enter your last name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Phone (Optional)</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="password" class="form-control" placeholder="Create a password (min 6 characters)" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+                        </div>
+                        
+                        <button type="submit" id="register-btn" class="btn btn-primary btn-block">
+                            Register
+                        </button>
+                    </form>
+                    
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <p style="color: #6b7280;">Already have an account? <a href="login.html" style="color: #2563eb;">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer style="background: white; padding: 1rem 0; text-align: center; color: #6b7280;">
+            <p>&copy; 2024 SmartMart. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
